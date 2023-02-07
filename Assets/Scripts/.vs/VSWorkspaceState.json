@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Game",
+    "\\Game\\Gun",
+    "\\Game\\Player",
+    "\\Menu"
+  ],
+  "SelectedNode": "\\Game\\Player\\PlayerController.cs",
+  "PreviewInSolutionExplorer": false
+}
