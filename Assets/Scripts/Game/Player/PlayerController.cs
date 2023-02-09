@@ -4,8 +4,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 6.0f;
-    public float runSpeed = 8.0f;
-    public float jumpSpeed = 8.0f;
+    public float runSpeed = 15.0f;
+    public float jumpSpeed = 15.0f;
     public float gravity = 20.0f;
 
     public float mouseSensibility = 3.0f; 
@@ -15,10 +15,15 @@ public class PlayerController : MonoBehaviour
     private Transform mainCamera;
     private bool gameStarted = false;
 
+    AudioSource bulletSound;
+    AudioSource runSound;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         mainCamera = Camera.main.transform;
+        bulletSound = GetComponent<AudioSource>();
+        runSound = GetComponent<AudioSource>();
     }
     
     void Update()
@@ -37,8 +42,9 @@ public class PlayerController : MonoBehaviour
             moveDirection = transform.TransformDirection(moveDirection);
             
             float speed = walkSpeed;
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift)){
                 speed = runSpeed;
+            }
             
             moveDirection *= speed;
             

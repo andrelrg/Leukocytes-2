@@ -8,7 +8,6 @@ public class PlayerDamage : MonoBehaviour
     public float healthBarLength;
     private float maxPlayerHealth = 100f;
 
-    // Start is called before the first frame update
     void Start()
     {
         healthBarLength = Screen.width / 2;
@@ -22,7 +21,7 @@ public class PlayerDamage : MonoBehaviour
 
             if (playerHealth <= 0)
             {
-                Debug.Log("Morreu");
+                StartCoroutine(PlayerDied());
             }
         }
     }
@@ -30,5 +29,12 @@ public class PlayerDamage : MonoBehaviour
     private void OnGUI()
     {
         GUI.Box(new Rect(10, Screen.height - 40, healthBarLength, 20), "Player Health: " + playerHealth + "/" + maxPlayerHealth);
+    }
+
+    IEnumerator PlayerDied()
+    {
+        GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 100, 50), "Player Died");
+        yield return new WaitForSeconds(5f);
+        Application.Quit();
     }
 }
